@@ -15,8 +15,8 @@
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item"><span class="page-link" @click="getPosts(currentPage - 1)">Previous</span></li>
-            <li class="page-item"><span class="page-link" @click="getPosts(currentPage + 1)">Next</span></li>
+            <li class="page-item" :class="(currentPage == 1)?'disabled': ''"><span class="page-link" @click="getPosts(currentPage - 1)">Previous</span></li>
+            <li class="page-item" :class="(currentPage == lastPage)?'disabled': ''"><span class="page-link" @click="getPosts(currentPage + 1)">Next</span></li>
         </ul>
     </nav>
 </div>
@@ -44,6 +44,7 @@ export default {
             .then((response) => {
                 this.currentPage = response.data.results.current_page;
                 this.posts = response.data.results.data;
+                this.lastPage = response.data.results.last_page;
             });
            
         },

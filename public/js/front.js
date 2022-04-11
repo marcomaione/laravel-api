@@ -1952,6 +1952,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this.currentPage = response.data.results.current_page;
         _this.posts = response.data.results.data;
+        _this.lastPage = response.data.results.last_page;
       });
     }
   },
@@ -2503,35 +2504,49 @@ var render = function () {
     _vm._v(" "),
     _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
       _c("ul", { staticClass: "pagination" }, [
-        _c("li", { staticClass: "page-item" }, [
-          _c(
-            "span",
-            {
-              staticClass: "page-link",
-              on: {
-                click: function ($event) {
-                  return _vm.getPosts(_vm.currentPage - 1)
+        _c(
+          "li",
+          {
+            staticClass: "page-item",
+            class: _vm.currentPage == 1 ? "disabled" : "",
+          },
+          [
+            _c(
+              "span",
+              {
+                staticClass: "page-link",
+                on: {
+                  click: function ($event) {
+                    return _vm.getPosts(_vm.currentPage - 1)
+                  },
                 },
               },
-            },
-            [_vm._v("Previous")]
-          ),
-        ]),
+              [_vm._v("Previous")]
+            ),
+          ]
+        ),
         _vm._v(" "),
-        _c("li", { staticClass: "page-item" }, [
-          _c(
-            "span",
-            {
-              staticClass: "page-link",
-              on: {
-                click: function ($event) {
-                  return _vm.getPosts(_vm.currentPage + 1)
+        _c(
+          "li",
+          {
+            staticClass: "page-item",
+            class: _vm.currentPage == _vm.lastPage ? "disabled" : "",
+          },
+          [
+            _c(
+              "span",
+              {
+                staticClass: "page-link",
+                on: {
+                  click: function ($event) {
+                    return _vm.getPosts(_vm.currentPage + 1)
+                  },
                 },
               },
-            },
-            [_vm._v("Next")]
-          ),
-        ]),
+              [_vm._v("Next")]
+            ),
+          ]
+        ),
       ]),
     ]),
   ])
