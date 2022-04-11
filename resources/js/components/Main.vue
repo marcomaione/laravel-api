@@ -13,6 +13,12 @@
             </div>
         </div>
     </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><span class="page-link" @click="getPosts(currentPage - 1)">Previous</span></li>
+            <li class="page-item"><span class="page-link" @click="getPosts(currentPage + 1)">Next</span></li>
+        </ul>
+    </nav>
 </div>
 
 </template>
@@ -24,14 +30,22 @@ export default {
     data() {
         return {
             posts:[],
+            currentPage: 1
         };
     },
 
     methods: {
-        getPosts() {
-            axios.get('/api/posts').then((response)=> {
-            this.posts = response.data.results;
+        getPosts(apiPage) {
+            axios.get('/api/posts', {
+                'params': {
+                    'page': apiPage
+                }
+            })
+            .then((response) => {
+                this.currentPage = response.data.results.current_page;
+                this.posts = response.data.results.data;
             });
+           
         },
 
         
