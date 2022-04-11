@@ -92,7 +92,9 @@ class PostController extends Controller
 
         $postDateTime = Carbon::create($post->created_at);
 
-        return view ('admin.post.show', compact('post'));
+        $diffInDays = $now->diffInDays($postDateTime);
+
+        return view ('admin.post.show', compact('post','diffInDays'));
     }
 
     /**

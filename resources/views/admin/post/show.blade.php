@@ -10,6 +10,7 @@
                 <div><strong>contenuto</strong>{{!!$post->content !!}}</div>
                 <div><strong>slug</strong>{{$post->slug}}</div>
                 <div><strong>Categoria</strong>{{$post->category->name}}</div>
+                <div><strong>Scritto</strong>{{$diffInDays}} giorni fa</div>
                 <div>
                     @foreach ($post->tags as $tag)
                         <span class="badge badge-primary">{{$tag->name}}</span>
