@@ -23,15 +23,24 @@ export default {
 
     data() {
         return {
-            posts:[]
-        }
+            posts:[],
+        };
     },
 
-    created() {
-        axios.get('/api/posts').then((response)=> {
+    methods: {
+        getPosts() {
+            axios.get('/api/posts').then((response)=> {
             this.posts = response.data.results;
-        });
+            });
+        },
+
+        
+    },
+    created() {
+        this.getPosts();
+
     }
+
 
 }
 </script>

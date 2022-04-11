@@ -1934,12 +1934,17 @@ __webpack_require__.r(__webpack_exports__);
       posts: []
     };
   },
-  created: function created() {
-    var _this = this;
+  methods: {
+    getPosts: function getPosts() {
+      var _this = this;
 
-    axios.get('/api/posts').then(function (response) {
-      _this.posts = response.data.results;
-    });
+      axios.get('/api/posts').then(function (response) {
+        _this.posts = response.data.results;
+      });
+    }
+  },
+  created: function created() {
+    this.getPosts();
   }
 });
 
