@@ -14848,7 +14848,7 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#root',
   render: function render(h) {
-    return _views_App__WEBPACK_IMPORTED_MODULE_1__["default"];
+    return h(_views_App__WEBPACK_IMPORTED_MODULE_1__["default"]);
   }
 });
 
